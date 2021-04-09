@@ -50,7 +50,7 @@ void parseline(char* line, memmap* mm){
 
 int memmap_size(memmap mm) {
     int byte_per_address = 4;
-    return (mm->end_addr - mm->start_addr) * byte_per_address;
+    return (mm.end_addr - mm.start_addr) * byte_per_address;
 }
 
 // Print contents of a memmap struct in a nice way.
