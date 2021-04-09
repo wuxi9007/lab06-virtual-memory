@@ -45,15 +45,19 @@ void parseline(char* line, memmap* mm){
     mm->original_input = linecpy; 
 
     // STUDENT DEFINED FUNCTIONS
-    // mm->length = memmap_size(*mm);
+     mm->length = memmap_size(*mm);
 }
 
+unsigned long int memmap_size(memmap mm) {
+    int byte_per_address = 4;
+    return (mm->end_addr - mm->start_addr) * byte_per_address;
+}
 
 // Print contents of a memmap struct in a nice way.
 void pprint(memmap mm){
     printf("Original text: %s", mm.original_input);
-    printf(" Map name: %s\n Start address: %lu\n End address: %lu\n Permissions: %c%c%c\n",
-            mm.name, mm.start_addr, mm.end_addr, mm.r, mm.w, mm.x);
+    printf(" Map name: %s\n Start address: %lu\n End address: %lu\n Permissions: %c%c%c\n Length: %lu\n",
+            mm.name, mm.start_addr, mm.end_addr, mm.r, mm.w, mm.x, mm.length);
     printf("Dependent attributes:\n Section %d\n\n",
             mm.section);
 }
